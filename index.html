@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Repub Lounge | Authentic African Cuisine & Sunset Views in Kigali</title>
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #c99e66;
+            --primary-dark: #a37943;
+            --bg-dark: #0f1115;
+            --bg-card: #181b22;
+            --text-light: #f3f4f6;
+            --text-muted: #9ca3af;
+            --font-heading: 'Cormorant Garamond', serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation Bar */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(15, 17, 21, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 2rem;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-light);
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .btn-reserve {
+            background: var(--primary);
+            color: #000;
+            padding: 0.7rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+
+        .btn-reserve:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(15, 17, 21, 0.6), rgba(15, 17, 21, 0.9)), 
+                        url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 1rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-tagline {
+            color: var(--primary);
+            font-size: 1.1rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .hero-title {
+            font-family: var(--font-heading);
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-subtitle {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            color: var(--text-light);
+        }
+
+        .section-header p {
+            color: var(--primary);
+            font-size: 1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Menu Section */
+        .menu-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-family: var(--font-body);
+            transition: all 0.3s;
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background: var(--primary);
+            color: #000;
+            border-color: var(--primary);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .menu-item {
+            background: var(--bg-card);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .menu-item-info h4 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-item-info p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .menu-item-price {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        /* Events / Live Music */
+        .events-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            background: var(--bg-card);
+            padding: 3rem;
+            border-radius: 12px;
+        }
+
+        .events-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .events-content h3 {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .events-content p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Reservation Form */
+        .reservation-wrapper {
+            background: var(--bg-card);
+            padding: 4rem;
+            border-radius: 12px;
+            border: 1px solid rgba(201, 158, 102, 0.2);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 0.9rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+            border-radius: 4px;
+            outline: none;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            border-color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            background: #090a0d;
+            padding: 4rem 2rem 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h4 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .footer-col p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.5rem; }
+            .events-container { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">REPUB <span>LOUNGE</span></a>
+            <ul class="nav-links">
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#events">Live Music</a></li>
+                <li><a href="#contact">Location</a></li>
+            </ul>
+            <a href="#reserve" class="btn-reserve">Book A Table</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <p class="hero-tagline">Kimihurura, Kigali</p>
+            <h1 class="hero-title">Authentic East African Flavors & Unrivaled Sunset Views</h1>
+            <p class="hero-subtitle">Experience Kigali’s finest brochettes, regional specialties, and signature cocktails under the evening sky.</p>
+            <a href="#reserve" class="btn-reserve" style="padding: 1rem 2.5rem; font-size: 1rem;">Reserve Your Patio Table</a>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu">
+        <div class="section-header">
+            <p>Culinary Excellence</p>
+            <h2>Our Featured Menu</h2>
+        </div>
+
+        <div class="menu-tabs">
+            <button class="tab-btn active">Grills & Brochettes</button>
+            <button class="tab-btn">Specialities</button>
+            <button class="tab-btn">Bar & Cocktails</button>
+        </div>
+
+        <div class="menu-grid">
+            <div class="menu-item">
+                <div class="menu-item-info">
+                    <h4>Rwandan Beef Brochette</h4>
+                    <p>Tender marinated beef skewers served with roasted potatoes or plantains.</p>
+                </div>
+                <div class="menu-item-price">8,500 RWF</div>
+            </div>
+
+            <div class="menu-item">
+                <div class="menu-item-info">
+                    <h4>Whole Grilled Tilapia</h4>
+                    <p>Local favorite seasoned with regional herbs and slow-grilled to perfection.</p>
+                </div>
+                <div class="menu-item-price">18,000 RWF</div>
+            </div>
+
+            <div class="menu-item">
+                <div class="menu-item-info">
+                    <h4>Isambaza Fresh Fish Skewers</h4>
+                    <p>Crispy Lake Kivu fish served with homemade piri-piri sauce.</p>
+                </div>
+                <div class="menu-item-price">10,000 RWF</div>
+            </div>
+
+            <div class="menu-item">
+                <div class="menu-item-info">
+                    <h4>Repub Signature Cocktail</h4>
+                    <p>Infused local gin with tropical passion fruit and fresh mint.</p>
+                </div>
+                <div class="menu-item-price">7,000 RWF</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Music & Atmosphere -->
+    <section id="events">
+        <div class="events-container">
+            <div class="events-image">
+                <img src="https://images.unsplash.com/photo-1511192336575-5a79af67a629?auto=format&fit=crop&w=800&q=80" alt="Live Music Kigali">
+            </div>
+            <div class="events-content">
+                <p style="color: var(--primary); text-transform: uppercase; font-weight: 600;">Wednesday — Saturday</p>
+                <h3>Live African Jazz & Acoustic Nights</h3>
+                <p>Repub Lounge is more than just a restaurant; it’s Kigali’s premier venue for intimate musical performances. Join us every Friday night (8:00 PM - 10:00 PM) for local jazz artists while enjoying our patio view.</p>
+                <a href="#reserve" class="btn-reserve">Book For Jazz Night</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reservation Section -->
+    <section id="reserve">
+        <div class="section-header">
+            <p>Reservations</p>
+            <h2>Book Your Experience</h2>
+        </div>
+
+        <div class="reservation-wrapper">
+            <form onsubmit="event.preventDefault(); alert('Reservation submitted successfully! We will contact you via WhatsApp.');">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone / WhatsApp</label>
+                        <input type="tel" placeholder="+250 788 000 000" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Date</label>
+                        <input type="date" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Time</label>
+                        <input type="time" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Guests</label>
+                        <select>
+                            <option>2 People</option>
+                            <option>4 People</option>
+                            <option>6+ People (Party)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Seating Preference</label>
+                        <select>
+                            <option>Outdoor Patio (City View)</option>
+                            <option>Indoor Lounge</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn-reserve" style="width: 100%; padding: 1.2rem; font-size: 1rem; border: none; cursor: pointer;">Confirm Reservation</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer / Address -->
+    <footer id="contact">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <a href="#" class="logo">REPUB <span>LOUNGE</span></a>
+                <p style="margin-top: 1rem;">The iconic dining and lounge experience in Kimihurura, Kigali.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Location & Hours</h4>
+                <p><i class="fa-solid fa-location-dot" style="color: var(--primary);"></i> 16 KG 674 Street, Kimihurura, Kigali</p>
+                <p><i class="fa-solid fa-clock" style="color: var(--primary);"></i> Open Daily: 12:00 PM – 11:00 PM</p>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Us</h4>
+                <p><i class="fa-solid fa-phone" style="color: var(--primary);"></i> +250 788 388 333</p>
+                <p><i class="fa-solid fa-envelope" style="color: var(--primary);"></i> info@republounge.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Repub Lounge Kigali. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
